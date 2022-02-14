@@ -1,0 +1,401 @@
+2021-12-21T15:12:17.667895+0000 - pyramid.viewderivers - ERROR - An error has been caught in function 'viewresult_to_response', process 'MainProcess' (98062), thread 'MainThread' (140214946649920):
+Traceback (most recent call last):
+
+  File "/usr/share/nginx/html/test/hello_world.py", line 29, in <module>
+    server.serve_forever()
+    │      └ <function BaseServer.serve_forever at 0x7f865592dfc0>
+    └ <wsgiref.simple_server.WSGIServer object at 0x7f86548289a0>
+
+  File "/usr/lib/python3.10/socketserver.py", line 237, in serve_forever
+    self._handle_request_noblock()
+    │    └ <function BaseServer._handle_request_noblock at 0x7f865592e200>
+    └ <wsgiref.simple_server.WSGIServer object at 0x7f86548289a0>
+  File "/usr/lib/python3.10/socketserver.py", line 316, in _handle_request_noblock
+    self.process_request(request, client_address)
+    │    │               │        └ ('127.0.0.1', 60332)
+    │    │               └ <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 6543), raddr=('1...
+    │    └ <function BaseServer.process_request at 0x7f865592e3b0>
+    └ <wsgiref.simple_server.WSGIServer object at 0x7f86548289a0>
+  File "/usr/lib/python3.10/socketserver.py", line 347, in process_request
+    self.finish_request(request, client_address)
+    │    │              │        └ ('127.0.0.1', 60332)
+    │    │              └ <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 6543), raddr=('1...
+    │    └ <function BaseServer.finish_request at 0x7f865592e4d0>
+    └ <wsgiref.simple_server.WSGIServer object at 0x7f86548289a0>
+  File "/usr/lib/python3.10/socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    │    │                   │        │               └ <wsgiref.simple_server.WSGIServer object at 0x7f86548289a0>
+    │    │                   │        └ ('127.0.0.1', 60332)
+    │    │                   └ <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 6543), raddr=('1...
+    │    └ <class 'wsgiref.simple_server.WSGIRequestHandler'>
+    └ <wsgiref.simple_server.WSGIServer object at 0x7f86548289a0>
+  File "/usr/lib/python3.10/socketserver.py", line 747, in __init__
+    self.handle()
+    │    └ <function WSGIRequestHandler.handle at 0x7f865596a0e0>
+    └ <wsgiref.simple_server.WSGIRequestHandler object at 0x7f8654829150>
+  File "/usr/lib/python3.10/wsgiref/simple_server.py", line 134, in handle
+    handler.run(self.server.get_app())
+    │       │   │    │      └ <function WSGIServer.get_app at 0x7f8655969ea0>
+    │       │   │    └ <wsgiref.simple_server.WSGIServer object at 0x7f86548289a0>
+    │       │   └ <wsgiref.simple_server.WSGIRequestHandler object at 0x7f8654829150>
+    │       └ <function BaseHandler.run at 0x7f8655946710>
+    └ <wsgiref.simple_server.ServerHandler object at 0x7f8654828670>
+  File "/usr/lib/python3.10/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+    │    │        │           │    │        │    └ <function BaseHandler.start_response at 0x7f8655946a70>
+    │    │        │           │    │        └ <wsgiref.simple_server.ServerHandler object at 0x7f8654828670>
+    │    │        │           │    └ {'SHELL': '/usr/bin/zsh', 'LSCOLORS': 'Gxfxcxdxbxegedabagacad', 'LESS': '-R', 'XDEBUG_SESSION': '1', 'EDITOR': 'vim', 'XDG_SE...
+    │    │        │           └ <wsgiref.simple_server.ServerHandler object at 0x7f8654828670>
+    │    │        └ <pyramid.router.Router object at 0x7f8654828520>
+    │    └ None
+    └ <wsgiref.simple_server.ServerHandler object at 0x7f8654828670>
+  File "/home/mic/.local/lib/python3.10/site-packages/pyramid/router.py", line 270, in __call__
+    response = self.execution_policy(environ, self)
+               │    │                │        └ <pyramid.router.Router object at 0x7f8654828520>
+               │    │                └ {'SHELL': '/usr/bin/zsh', 'LSCOLORS': 'Gxfxcxdxbxegedabagacad', 'LESS': '-R', 'XDEBUG_SESSION': '1', 'EDITOR': 'vim', 'XDG_SE...
+               │    └ <function default_execution_policy at 0x7f86549c5510>
+               └ <pyramid.router.Router object at 0x7f8654828520>
+  File "/home/mic/.local/lib/python3.10/site-packages/pyramid/router.py", line 276, in default_execution_policy
+    return router.invoke_request(request)
+           │      │              └ <Request at 0x7f86548297b0 GET http://localhost:6543/>
+           │      └ <function Router.invoke_request at 0x7f86549c5360>
+           └ <pyramid.router.Router object at 0x7f8654828520>
+  File "/home/mic/.local/lib/python3.10/site-packages/pyramid/router.py", line 245, in invoke_request
+    response = handle_request(request)
+               │              └ <Request at 0x7f86548297b0 GET http://localhost:6543/>
+               └ <function excview_tween_factory.<locals>.excview_tween at 0x7f86548580d0>
+  File "/home/mic/.local/lib/python3.10/site-packages/pyramid/tweens.py", line 41, in excview_tween
+    response = handler(request)
+               │       └ <Request at 0x7f86548297b0 GET http://localhost:6543/>
+               └ <bound method Router.handle_request of <pyramid.router.Router object at 0x7f8654828520>>
+  File "/home/mic/.local/lib/python3.10/site-packages/pyramid/router.py", line 143, in handle_request
+    response = _call_view(
+               └ <function _call_view at 0x7f86549abf40>
+  File "/home/mic/.local/lib/python3.10/site-packages/pyramid/view.py", line 674, in _call_view
+    response = view_callable(context, request)
+               │             │        └ <Request at 0x7f86548297b0 GET http://localhost:6543/>
+               │             └ <pyramid.traversal.DefaultRootFactory object at 0x7f8654829c00>
+               └ <function rendered_view.<locals>.viewresult_to_response at 0x7f8654859240>
+> File "/home/mic/.local/lib/python3.10/site-packages/pyramid/viewderivers.py", line 392, in viewresult_to_response
+    result = view(context, request)
+             │    │        └ <Request at 0x7f86548297b0 GET http://localhost:6543/>
+             │    └ <pyramid.traversal.DefaultRootFactory object at 0x7f8654829c00>
+             └ <function hello_world at 0x7f8654f00040>
+
+TypeError: hello_world() takes 1 positional argument but 2 were given
+2022-01-22T11:12:25.178200+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (56247), thread 'MainThread' (140074873325376):
+Traceback (most recent call last):
+
+> File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 41, in <module>
+    head_builder()
+    └ <function head_builder at 0x7f65b7c06200>
+
+  File "/home/mic/.local/lib/python3.10/site-packages/snoop/tracer.py", line 170, in simple_wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ()
+           └ <function head_builder at 0x7f65b8d8fd90>
+
+  File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 35, in head_builder
+    for i in len(new_titles):
+                 └ ['hp.php', 'search.php', 'about.php']
+
+TypeError: 'int' object is not iterable
+2022-01-22T11:13:41.457275+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (56275), thread 'MainThread' (139667972228928):
+Traceback (most recent call last):
+
+> File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 41, in <module>
+    head_builder()
+    └ <function head_builder at 0x7f06fa8e6200>
+
+  File "/home/mic/.local/lib/python3.10/site-packages/snoop/tracer.py", line 170, in simple_wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ()
+           └ <function head_builder at 0x7f06fba6fd90>
+
+  File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 35, in head_builder
+    for i in len(new_titles):
+                 └ ['hp.php', 'search.php', 'about.php']
+
+TypeError: 'int' object is not iterable
+2022-01-22T11:14:17.055272+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (56296), thread 'MainThread' (140648125544256):
+Traceback (most recent call last):
+
+> File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 41, in <module>
+    head_builder()
+    └ <function head_builder at 0x7feb303f2200>
+
+  File "/home/mic/.local/lib/python3.10/site-packages/snoop/tracer.py", line 170, in simple_wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ()
+           └ <function head_builder at 0x7feb31577d90>
+
+  File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 36, in head_builder
+    with open(f"/usr/share/nginx/html/support_services/teste/{new_titles[i]}") as f:
+
+FileNotFoundError: [Errno 2] No such file or directory: '/usr/share/nginx/html/support_services/teste/hp.php'
+2022-01-22T11:15:06.567171+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (56329), thread 'MainThread' (140029262886720):
+Traceback (most recent call last):
+
+> File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 41, in <module>
+    head_builder()
+    └ <function head_builder at 0x7f5b19286200>
+
+  File "/home/mic/.local/lib/python3.10/site-packages/snoop/tracer.py", line 170, in simple_wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ()
+           └ <function head_builder at 0x7f5b1a40bd90>
+
+  File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 37, in head_builder
+    f.write(template.render(title=head_pages[i][0], description=[i][1], page_url=[i][2], project=[i][3], refresh=[i][4]))
+    │ │     │        │            │          │                   │                │               │               └ 0
+    │ │     │        │            │          │                   │                │               └ 0
+    │ │     │        │            │          │                   │                └ 0
+    │ │     │        │            │          │                   └ 0
+    │ │     │        │            │          └ 0
+    │ │     │        │            └ {'hp': {'title': 'HP', 'description': 'homepage', 'page_url': 'http://support_services/teste/hp.php', 'project': 'support_ser...
+    │ │     │        └ <function Template.render at 0x7f5b194fa170>
+    │ │     └ <Template 'base.tpl'>
+    │ └ <method 'write' of '_io.TextIOWrapper' objects>
+    └ <_io.TextIOWrapper name='/usr/share/nginx/html/support_services/teste/hp.php' mode='w' encoding='UTF-8'>
+
+KeyError: 0
+2022-01-22T11:16:58.774686+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (56353), thread 'MainThread' (140214192789312):
+Traceback (most recent call last):
+
+> File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 41, in <module>
+    head_builder()
+    └ <function head_builder at 0x7f8627d66200>
+
+  File "/home/mic/.local/lib/python3.10/site-packages/snoop/tracer.py", line 170, in simple_wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ()
+           └ <function head_builder at 0x7f8628ef3d90>
+
+  File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 37, in head_builder
+    f.write(template.render(title=head_pages[i][0], description=[i][1], page_url=[i][2], project=[i][3], refresh=[i][4]))
+    │ │     │        │            │          │                   │                │               │               └ 0
+    │ │     │        │            │          │                   │                │               └ 0
+    │ │     │        │            │          │                   │                └ 0
+    │ │     │        │            │          │                   └ 0
+    │ │     │        │            │          └ 0
+    │ │     │        │            └ {'hp': {'title': 'HP', 'description': 'homepage', 'page_url': 'http://support_services/teste/hp.php', 'project': 'support_ser...
+    │ │     │        └ <function Template.render at 0x7f8627fde170>
+    │ │     └ <Template 'base.tpl'>
+    │ └ <method 'write' of '_io.TextIOWrapper' objects>
+    └ <_io.TextIOWrapper name='/usr/share/nginx/html/support_services/teste/hp.php' mode='w' encoding='UTF-8'>
+
+KeyError: 0
+2022-01-22T11:26:11.358423+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (56609), thread 'MainThread' (139895076218688):
+Traceback (most recent call last):
+
+> File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 44, in <module>
+    head_builder()
+    └ <function head_builder at 0x7f3bdb02a290>
+
+  File "/home/mic/.local/lib/python3.10/site-packages/snoop/tracer.py", line 170, in simple_wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ()
+           └ <function head_builder at 0x7f3bdc1abd90>
+
+  File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 40, in head_builder
+    f.write(template.render(title=head_pages[i][0], description=[i][1], page_url=[i][2], project=[i][3], refresh=[i][4]))
+    │ │     │        │            │          │                   │                │               │               └ 0
+    │ │     │        │            │          │                   │                │               └ 0
+    │ │     │        │            │          │                   │                └ 0
+    │ │     │        │            │          │                   └ 0
+    │ │     │        │            │          └ 0
+    │ │     │        │            └ {'hp': {'title': 'HP', 'description': 'homepage', 'page_url': 'http://support_services/teste/hp.php', 'project': 'support_ser...
+    │ │     │        └ <function Template.render at 0x7f3bdb2a2200>
+    │ │     └ <Template 'base.tpl'>
+    │ └ <method 'write' of '_io.TextIOWrapper' objects>
+    └ <_io.TextIOWrapper name='/usr/share/nginx/html/support_services/teste/hp.php' mode='w' encoding='UTF-8'>
+
+KeyError: 0
+2022-01-22T13:36:09.536367+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (59945), thread 'MainThread' (140562943903552):
+Traceback (most recent call last):
+
+> File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 43, in <module>
+    head_builder()
+    └ <function head_builder at 0x7fd75b066440>
+
+  File "/home/mic/.local/lib/python3.10/site-packages/snoop/tracer.py", line 170, in simple_wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ()
+           └ <function head_builder at 0x7fd75c1efd90>
+
+  File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 23, in head_builder
+    head_pages = Inputs.head()
+                 │      └ <function Inputs.head at 0x7fd75b0663b0>
+                 └ <class 'inputs.Inputs'>
+
+TypeError: Inputs.head() missing 1 required positional argument: 'self'
+2022-01-22T13:36:09.536367+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (59945), thread 'MainThread' (140562943903552):
+Traceback (most recent call last):
+
+> File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 43, in <module>
+    head_builder()
+    └ <function head_builder at 0x7fd75b066440>
+
+  File "/home/mic/.local/lib/python3.10/site-packages/snoop/tracer.py", line 170, in simple_wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ()
+           └ <function head_builder at 0x7fd75c1efd90>
+
+  File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 23, in head_builder
+    head_pages = Inputs.head()
+                 │      └ <function Inputs.head at 0x7fd75b0663b0>
+                 └ <class 'inputs.Inputs'>
+
+TypeError: Inputs.head() missing 1 required positional argument: 'self'
+2022-01-22T14:05:29.314801+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (60682), thread 'MainThread' (139967305725760):
+Traceback (most recent call last):
+
+> File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 48, in <module>
+    head_builder()
+    └ <function head_builder at 0x7f4cac392200>
+
+  File "/home/mic/.local/lib/python3.10/site-packages/snoop/tracer.py", line 170, in simple_wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ()
+           └ <function head_builder at 0x7f4cad517d90>
+
+  File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 37, in head_builder
+    template = env.get_template("base.tpl")
+               │   └ <function Environment.get_template at 0x7f4cac605c60>
+               └ <jinja2.environment.Environment object at 0x7f4cac1bd6f0>
+
+  File "/home/mic/.local/lib/python3.10/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+           │    │              │     └ None
+           │    │              └ 'base.tpl'
+           │    └ <function Environment._load_template at 0x7f4cac605bd0>
+           └ <jinja2.environment.Environment object at 0x7f4cac1bd6f0>
+  File "/home/mic/.local/lib/python3.10/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               │    │      │    │     │     │    │            └ None
+               │    │      │    │     │     │    └ <function Environment.make_globals at 0x7f4cac605ea0>
+               │    │      │    │     │     └ <jinja2.environment.Environment object at 0x7f4cac1bd6f0>
+               │    │      │    │     └ 'base.tpl'
+               │    │      │    └ <jinja2.environment.Environment object at 0x7f4cac1bd6f0>
+               │    │      └ <function BaseLoader.load at 0x7f4cac607760>
+               │    └ <jinja2.loaders.FileSystemLoader object at 0x7f4cac1be9b0>
+               └ <jinja2.environment.Environment object at 0x7f4cac1bd6f0>
+  File "/home/mic/.local/lib/python3.10/site-packages/jinja2/loaders.py", line 137, in load
+    code = environment.compile(source, name, filename)
+           │           │       │       │     └ '/usr/share/nginx/html/support_services/templates/base.tpl'
+           │           │       │       └ 'base.tpl'
+           │           │       └ '<!DOCTYPE html>\n<html>\n    <head>\n    <title>{{ title }}</title>\n    <meta charset="utf-8">\n    <meta name="viewport" c...
+           │           └ <function Environment.compile at 0x7f4cac605870>
+           └ <jinja2.environment.Environment object at 0x7f4cac1bd6f0>
+  File "/home/mic/.local/lib/python3.10/site-packages/jinja2/environment.py", line 757, in compile
+    self.handle_exception(source=source_hint)
+    │    │                       └ '<!DOCTYPE html>\n<html>\n    <head>\n    <title>{{ title }}</title>\n    <meta charset="utf-8">\n    <meta name="viewport" c...
+    │    └ <function Environment.handle_exception at 0x7f4cac605ab0>
+    └ <jinja2.environment.Environment object at 0x7f4cac1bd6f0>
+  File "/home/mic/.local/lib/python3.10/site-packages/jinja2/environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+          │                              └ '<!DOCTYPE html>\n<html>\n    <head>\n    <title>{{ title }}</title>\n    <meta charset="utf-8">\n    <meta name="viewport" c...
+          └ <function rewrite_traceback_stack at 0x7f4cac3928c0>
+  File "/usr/share/nginx/html/support_services/templates/base.tpl", line 43, in template
+    <div id='content'>{% block content %}
+
+jinja2.exceptions.TemplateSyntaxError: Unexpected end of template. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+2022-01-22T14:05:29.314801+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (60682), thread 'MainThread' (139967305725760):
+Traceback (most recent call last):
+
+> File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 48, in <module>
+    head_builder()
+    └ <function head_builder at 0x7f4cac392200>
+
+  File "/home/mic/.local/lib/python3.10/site-packages/snoop/tracer.py", line 170, in simple_wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ()
+           └ <function head_builder at 0x7f4cad517d90>
+
+  File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 37, in head_builder
+    template = env.get_template("base.tpl")
+               │   └ <function Environment.get_template at 0x7f4cac605c60>
+               └ <jinja2.environment.Environment object at 0x7f4cac1bd6f0>
+
+  File "/home/mic/.local/lib/python3.10/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+           │    │              │     └ None
+           │    │              └ 'base.tpl'
+           │    └ <function Environment._load_template at 0x7f4cac605bd0>
+           └ <jinja2.environment.Environment object at 0x7f4cac1bd6f0>
+  File "/home/mic/.local/lib/python3.10/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               │    │      │    │     │     │    │            └ None
+               │    │      │    │     │     │    └ <function Environment.make_globals at 0x7f4cac605ea0>
+               │    │      │    │     │     └ <jinja2.environment.Environment object at 0x7f4cac1bd6f0>
+               │    │      │    │     └ 'base.tpl'
+               │    │      │    └ <jinja2.environment.Environment object at 0x7f4cac1bd6f0>
+               │    │      └ <function BaseLoader.load at 0x7f4cac607760>
+               │    └ <jinja2.loaders.FileSystemLoader object at 0x7f4cac1be9b0>
+               └ <jinja2.environment.Environment object at 0x7f4cac1bd6f0>
+  File "/home/mic/.local/lib/python3.10/site-packages/jinja2/loaders.py", line 137, in load
+    code = environment.compile(source, name, filename)
+           │           │       │       │     └ '/usr/share/nginx/html/support_services/templates/base.tpl'
+           │           │       │       └ 'base.tpl'
+           │           │       └ '<!DOCTYPE html>\n<html>\n    <head>\n    <title>{{ title }}</title>\n    <meta charset="utf-8">\n    <meta name="viewport" c...
+           │           └ <function Environment.compile at 0x7f4cac605870>
+           └ <jinja2.environment.Environment object at 0x7f4cac1bd6f0>
+  File "/home/mic/.local/lib/python3.10/site-packages/jinja2/environment.py", line 757, in compile
+    self.handle_exception(source=source_hint)
+    │    │                       └ '<!DOCTYPE html>\n<html>\n    <head>\n    <title>{{ title }}</title>\n    <meta charset="utf-8">\n    <meta name="viewport" c...
+    │    └ <function Environment.handle_exception at 0x7f4cac605ab0>
+    └ <jinja2.environment.Environment object at 0x7f4cac1bd6f0>
+  File "/home/mic/.local/lib/python3.10/site-packages/jinja2/environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+          │                              └ '<!DOCTYPE html>\n<html>\n    <head>\n    <title>{{ title }}</title>\n    <meta charset="utf-8">\n    <meta name="viewport" c...
+          └ <function rewrite_traceback_stack at 0x7f4cac3928c0>
+  File "/usr/share/nginx/html/support_services/templates/base.tpl", line 43, in template
+    <div id='content'>{% block content %}
+
+jinja2.exceptions.TemplateSyntaxError: Unexpected end of template. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+2022-01-22T15:35:53.641122+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (63180), thread 'MainThread' (139818375771968):
+Traceback (most recent call last):
+
+> File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 70, in <module>
+    head_builder()
+    └ <function head_builder at 0x7f29ff4ea5f0>
+
+  File "/home/mic/.local/lib/python3.10/site-packages/snoop/tracer.py", line 170, in simple_wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ()
+           └ <function head_builder at 0x7f2a0066bd90>
+
+  File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 25, in head_builder
+    header_title = inp.headertitle()
+                   └ <inputs.Inputs object at 0x7f29ff312b30>
+
+AttributeError: 'Inputs' object has no attribute 'headertitle'
+2022-01-22T15:35:53.641122+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (63180), thread 'MainThread' (139818375771968):
+Traceback (most recent call last):
+
+> File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 70, in <module>
+    head_builder()
+    └ <function head_builder at 0x7f29ff4ea5f0>
+
+  File "/home/mic/.local/lib/python3.10/site-packages/snoop/tracer.py", line 170, in simple_wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ()
+           └ <function head_builder at 0x7f2a0066bd90>
+
+  File "/usr/share/nginx/html/support_services/template_python_files/page_builder.py", line 25, in head_builder
+    header_title = inp.headertitle()
+                   └ <inputs.Inputs object at 0x7f29ff312b30>
+
+AttributeError: 'Inputs' object has no attribute 'headertitle'
